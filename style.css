@@ -1,3 +1,111 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
 .hide-info {
   display: none;
+}
+
+.flex-container {
+  flex-wrap: wrap;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.user {
+  margin: 15px;
+  width: 200px;
+}
+
+.user-profile {
+  background-color: #5746ea;
+  padding: 25px 20px;
+  color: #ffffff;
+  border-radius: 10px;
+  z-index: 9999;
+  transform-style: preserve-3d;
+}
+
+.user-img {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.data-menu {
+  background-color: #1d204b;
+  padding: 15px;
+  border-radius: 0 0 15px 15px;
+  margin-top: -6px;
+}
+
+p.timeframe a {
+  color: #666ba3;
+  text-decoration: none;
+}
+
+p.timeframe a:hover,
+p.timeframe a:active {
+  color: #ffffff;
+}
+
+.img-container {
+  text-align: right;
+  padding: 0 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.stats-block {
+  width: 200px;
+  margin: 15px 0;
+}
+
+.stats-icon {
+  width: 30px;
+  height: 30px;
+  text-align: right;
+}
+.stats-text {
+  background-color: #1d204b;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: -5px 0 0 0;
+}
+
+.column {
+  margin: 0 10px;
+}
+
+.work-img {
+  background-color: #ff8b64;
+}
+
+.exercise-img {
+  background-color: #4bcf83;
+}
+
+.play-img {
+  background-color: #56c2e6;
+}
+
+.social-img {
+  background-color: #7235d1;
+}
+
+.study-img {
+  background-color: #ff5e7d;
+}
+
+.self-care-img {
+  background-color: #f1c75b;
 }
