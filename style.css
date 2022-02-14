@@ -10,10 +10,6 @@ h6 {
   font-family: "Montserrat", sans-serif;
 }
 
-.hide-info {
-  display: none;
-}
-
 .flex-container {
   flex-wrap: wrap;
   height: 100%;

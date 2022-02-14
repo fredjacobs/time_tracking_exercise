@@ -1,6 +1,8 @@
-fetch("data.json")
+import { initialHTML } from "./initial-html.js";
+
+/* fetch("data.json")
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((data) => console.log(data)); */
 
 /* const getData = async function (timeFrame) {
   try {
@@ -11,23 +13,31 @@ fetch("data.json")
   }
 }; */
 
-const renderHTML = async function () {
-  const userDiv = document.querySelector(".user");
+const daily = document.querySelector(".timeframe-daily");
+const weekly = document.querySelector(".timeframe-weekly");
+const monthly = document.querySelector(".timeframe-monthly");
+const userDiv = document.querySelector(".user");
+
+const init = function () {
+  userDiv.insertAdjacentHTML("afterend", initialHTML);
+};
+
+init();
+
+const renderHTML = async function (thetimeframe) {
+  const removeDivs = document.querySelectorAll(".column");
 
   try {
+    for (const el of removeDivs) {
+      el.remove();
+    }
+
     const response = await fetch(`data.json`);
     const data = await response.json();
 
     console.log(data);
 
-    const currentTimeWork = "32hrs";
-    const currentTimePlay = "32hrs";
-    const currentTimeStudy = "32hrs";
-    const currentTimeExercise = "32hrs";
-    const currentTimeSocial = "32hrs";
-    const currentTimeSelfCare = "32hrs";
-
-    const timeframe = "monthly";
+    const timeframe = thetimeframe;
 
     const html = `<div class="column col-1">
         <div class="work-block stats-block">
@@ -41,7 +51,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[0].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[0].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[0].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -56,7 +66,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[3].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[3].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[3].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -73,7 +83,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[1].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[1].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[1].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -88,7 +98,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[4].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[4].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[4].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -105,7 +115,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[2].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[2].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[2].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -125,7 +135,7 @@ const renderHTML = async function () {
             <h2 class="current-time">${data[5].timeframes[timeframe].current}hrs</h2>
             <p class="previous-time">
               <span class="timeframe">Last Week - </span
-              ><span class="previous-time-text">${data[5].timeframes[timeframe].current}hrs</span>
+              ><span class="previous-time-text">${data[5].timeframes[timeframe].previous}hrs</span>
             </p>
           </div>
         </div>
@@ -137,4 +147,12 @@ const renderHTML = async function () {
   }
 };
 
-renderHTML();
+daily.addEventListener("click", () => {
+  renderHTML("daily");
+});
+weekly.addEventListener("click", () => {
+  renderHTML("weekly");
+});
+monthly.addEventListener("click", () => {
+  renderHTML("monthly");
+});
